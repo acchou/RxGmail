@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'RxGmail_Example' do
+  pod 'RxGmail', :path => '../'
+
+  target 'RxGmail_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
