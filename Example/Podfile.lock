@@ -1,0 +1,16 @@
+PODS:
+  - RxGmail (0.1.0)
+
+DEPENDENCIES:
+  - RxGmail (from `../`)
+
+EXTERNAL SOURCES:
+  RxGmail:
+    :path: ../
+
+SPEC CHECKSUMS:
+  RxGmail: bceb513106a9f6744fb5eab08c381c64ebb3365a
+
+PODFILE CHECKSUM: 7f4cdfb3fa69c4e77a9a5b0983a9ac1c3f941d38
+
+COCOAPODS: 1.2.0
