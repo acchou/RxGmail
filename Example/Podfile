@@ -6,7 +6,7 @@ target 'RxGmail_Example' do
   pod 'GoogleSignIn'
 
   target 'RxGmail_Tests' do
-    inherit! :search_paths
+    inherit! :complete
 
     
   end
