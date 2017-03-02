@@ -1,18 +1,16 @@
-//
-//  ViewController.swift
-//  RxGmail
-//
-//  Created by Andy Chou on 03/01/2017.
-//  Copyright (c) 2017 Andy Chou. All rights reserved.
-//
-
 import UIKit
+import GoogleSignIn
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, GIDSignInUIDelegate {
+
+    @IBOutlet weak var signInButton: GIDSignInButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().signInSilently()
+        signInButton.style = .wide
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,4 +19,3 @@ class ViewController: UIViewController {
     }
 
 }
-

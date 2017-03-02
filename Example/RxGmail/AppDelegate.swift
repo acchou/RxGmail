@@ -1,22 +1,46 @@
-//
-//  AppDelegate.swift
-//  RxGmail
-//
-//  Created by Andy Chou on 03/01/2017.
-//  Copyright (c) 2017 Andy Chou. All rights reserved.
-//
-
 import UIKit
+import Google
+import GoogleSignIn
+import GoogleAPIClientForREST
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError!)")
+
+        let signIn = GIDSignIn.sharedInstance()!
+        signIn.delegate = self
+
+        // Request access to Gmail API.
+        let scopes: NSArray = signIn.scopes as NSArray? ?? []
+        let requiredScopes = [kGTLRAuthScopeGmailReadonly]
+        signIn.scopes = scopes.addingObjects(from: requiredScopes)
+
         return true
+    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String
+        let annotation = options[UIApplicationOpenURLOptionsKey.annotation]
+        return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if error == nil {
+            global.gmailService.authorizer = user.authentication.fetcherAuthorizer()
+
+            let storyboard = window?.rootViewController?.storyboard
+            let labelViewController = storyboard!.instantiateViewController(withIdentifier: "MainView")
+            window?.rootViewController = labelViewController
+        } else {
+            print("\(error.localizedDescription)")
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -43,4 +67,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-

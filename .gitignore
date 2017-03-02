@@ -18,6 +18,8 @@ profile
 DerivedData
 *.hmap
 *.ipa
+Example/RxGmail/GoogleService-Info.plist
+Example/RxGmail/debug.xcconfig
 
 # Bundler
 .bundle

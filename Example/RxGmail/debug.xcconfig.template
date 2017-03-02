@@ -1,0 +1,4 @@
+#include "Pods/Target Support Files/Pods-RxGmail_Example/Pods-RxGmail_Example.debug.xcconfig"
+
+GOOGLE_CLIENT_ID = XXX.apps.googleusercontent.com
+GOOGLE_REVERSED_CLIENT_ID = com.googleusercontent.apps.XXX
