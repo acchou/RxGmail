@@ -2,6 +2,8 @@ use_frameworks!
 
 target 'RxGmail_Example' do
   pod 'RxGmail', :path => '../'
+  pod 'RxCocoa', '~> 3.2'
+  pod 'GoogleSignIn'
 
   target 'RxGmail_Tests' do
     inherit! :search_paths

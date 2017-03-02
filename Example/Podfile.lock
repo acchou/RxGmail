@@ -1,7 +1,42 @@
 PODS:
-  - RxGmail (0.1.0)
+  - GoogleAPIClientForREST/Core (1.2.0):
+    - GTMSessionFetcher (>= 1.1.7)
+  - GoogleAPIClientForREST/Gmail (1.2.0):
+    - GoogleAPIClientForREST/Core
+    - GTMSessionFetcher (>= 1.1.7)
+  - GoogleSignIn (4.0.2):
+    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
+    - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
+    - GTMOAuth2 (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleToolboxForMac/DebugUtils (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.1):
+    - GoogleToolboxForMac/DebugUtils (= 2.1.1)
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
+  - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
+  - GTMOAuth2 (1.1.4):
+    - GTMSessionFetcher (~> 1.1)
+  - GTMSessionFetcher (1.1.8):
+    - GTMSessionFetcher/Full (= 1.1.8)
+  - GTMSessionFetcher/Core (1.1.8)
+  - GTMSessionFetcher/Full (1.1.8):
+    - GTMSessionFetcher/Core (= 1.1.8)
+  - RxCocoa (3.2.0):
+    - RxSwift (~> 3.1)
+  - RxGmail (0.1.0):
+    - GoogleAPIClientForREST/Gmail
+    - RxSwift (~> 3.2)
+    - RxSwiftExt (~> 2.1)
+  - RxSwift (3.2.0)
+  - RxSwiftExt (2.1.0):
+    - RxSwift (~> 3.0)
 
 DEPENDENCIES:
+  - GoogleSignIn
+  - RxCocoa (~> 3.2)
   - RxGmail (from `../`)
 
 EXTERNAL SOURCES:
@@ -9,8 +44,16 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  RxGmail: bceb513106a9f6744fb5eab08c381c64ebb3365a
+  GoogleAPIClientForREST: 9e5fd600a06c38abf92b5db337c5df2cfb95ee12
+  GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
+  GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
+  RxCocoa: ccdf43101a70407097a29082f648ba1676075b30
+  RxGmail: 1ac3716763fbb7c95202d1e6b2dd2fa294ae0bc2
+  RxSwift: 46574f70d416b7923c237195939cc488a7fbf3a0
+  RxSwiftExt: 492a6575cf6afabb8feeed3204bd0f9e2c695e67
 
-PODFILE CHECKSUM: 7f4cdfb3fa69c4e77a9a5b0983a9ac1c3f941d38
+PODFILE CHECKSUM: a79252e09c303115f1f70fe7eece9be25d7463f8
 
 COCOAPODS: 1.2.0
