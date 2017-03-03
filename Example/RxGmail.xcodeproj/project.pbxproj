@@ -9,19 +9,16 @@
 /* Begin PBXBuildFile section */
 		1A91613A1E689B4C007B3F29 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A9161391E689B4C007B3F29 /* GoogleService-Info.plist */; };
 		1A91613B1E689B4C007B3F29 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A9161391E689B4C007B3F29 /* GoogleService-Info.plist */; };
-		1A91613D1E689E9A007B3F29 /* debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1A91613C1E689E9A007B3F29 /* debug.xcconfig */; };
-		1A91613E1E689E9A007B3F29 /* debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1A91613C1E689E9A007B3F29 /* debug.xcconfig */; };
 		1A9161401E68B07C007B3F29 /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A91613F1E68B07C007B3F29 /* LabelViewController.swift */; };
 		1A9161421E68B1D8007B3F29 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9161411E68B1D8007B3F29 /* Global.swift */; };
 		1A9161441E68B7E0007B3F29 /* LabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9161431E68B7E0007B3F29 /* LabelViewModel.swift */; };
-		2C3899FEB0BD97AEC6076F1A /* Pods_RxGmail_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1AD4C7C853504917A50C566 /* Pods_RxGmail_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		E63BBD07ABFD4DE567AFFA6A /* Pods_RxGmail_Example_RxGmail_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8BC19DFF418BF66DA3A3D6 /* Pods_RxGmail_Example_RxGmail_Tests.framework */; };
+		A14EB39ED737C112578E7D4F /* Pods_RxGmail_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23482321A0F4CFB9FD93F98C /* Pods_RxGmail_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,14 +32,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0F8DA6689F4C0471A4E2C9D9 /* Pods-RxGmail_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxGmail_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxGmail_Example/Pods-RxGmail_Example.release.xcconfig"; sourceTree = "<group>"; };
 		1A9161391E689B4C007B3F29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1A91613C1E689E9A007B3F29 /* debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
 		1A91613F1E68B07C007B3F29 /* LabelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
 		1A9161411E68B1D8007B3F29 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		1A9161431E68B7E0007B3F29 /* LabelViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelViewModel.swift; sourceTree = "<group>"; };
+		23482321A0F4CFB9FD93F98C /* Pods_RxGmail_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxGmail_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		37BAAD118F786F8A3C297C60 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		38CEE4AF2D62910CEBB444A9 /* Pods-RxGmail_Example-RxGmail_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxGmail_Example-RxGmail_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxGmail_Example-RxGmail_Tests/Pods-RxGmail_Example-RxGmail_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* RxGmail_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxGmail_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,12 +49,9 @@
 		607FACE51AFB9204008FA782 /* RxGmail_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxGmail_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		68C88A1D3AB0497FCB8416A4 /* Pods-RxGmail_Example-RxGmail_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxGmail_Example-RxGmail_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxGmail_Example-RxGmail_Tests/Pods-RxGmail_Example-RxGmail_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		9028852E8AAEEE3238895DD1 /* Pods-RxGmail_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxGmail_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxGmail_Example/Pods-RxGmail_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		92A191E601AE393D8D75800D /* RxGmail.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RxGmail.podspec; path = ../RxGmail.podspec; sourceTree = "<group>"; };
 		BAAB533A822F8BBAA0499202 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		C1AD4C7C853504917A50C566 /* Pods_RxGmail_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxGmail_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE8BC19DFF418BF66DA3A3D6 /* Pods_RxGmail_Example_RxGmail_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxGmail_Example_RxGmail_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC4143B78AE4B0E7547A3586 /* Pods-RxGmail_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxGmail_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxGmail_Example/Pods-RxGmail_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C3899FEB0BD97AEC6076F1A /* Pods_RxGmail_Example.framework in Frameworks */,
+				A14EB39ED737C112578E7D4F /* Pods_RxGmail_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,13 +67,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E63BBD07ABFD4DE567AFFA6A /* Pods_RxGmail_Example_RxGmail_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B4FD23B624AD1F2FA982C88 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				23482321A0F4CFB9FD93F98C /* Pods_RxGmail_Example.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -88,8 +88,8 @@
 				607FACD21AFB9204008FA782 /* Example for RxGmail */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				D4C5EB7AA9B51FAB53595EEE /* Pods */,
-				6B32CC77B131D926C6DB7EED /* Frameworks */,
+				843E2D4172150EFCD006C7C4 /* Pods */,
+				5B4FD23B624AD1F2FA982C88 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,22 +156,10 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		6B32CC77B131D926C6DB7EED /* Frameworks */ = {
+		843E2D4172150EFCD006C7C4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C1AD4C7C853504917A50C566 /* Pods_RxGmail_Example.framework */,
-				EE8BC19DFF418BF66DA3A3D6 /* Pods_RxGmail_Example_RxGmail_Tests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D4C5EB7AA9B51FAB53595EEE /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9028852E8AAEEE3238895DD1 /* Pods-RxGmail_Example.debug.xcconfig */,
-				0F8DA6689F4C0471A4E2C9D9 /* Pods-RxGmail_Example.release.xcconfig */,
-				68C88A1D3AB0497FCB8416A4 /* Pods-RxGmail_Example-RxGmail_Tests.debug.xcconfig */,
-				38CEE4AF2D62910CEBB444A9 /* Pods-RxGmail_Example-RxGmail_Tests.release.xcconfig */,
+				BC4143B78AE4B0E7547A3586 /* Pods-RxGmail_Example.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -183,12 +171,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "RxGmail_Example" */;
 			buildPhases = (
-				3E79951E6A1523484470D739 /* [CP] Check Pods Manifest.lock */,
+				7BD49C5B6CE11339C998C39B /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				56693D7339B9C27BE3116FAE /* [CP] Embed Pods Frameworks */,
-				EF2A8F2E5C060C6BB788C49B /* [CP] Copy Pods Resources */,
+				DBE26CCDE82369D2815328F1 /* [CP] Embed Pods Frameworks */,
+				7027FB738FB0F9D5A4413AC0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -203,12 +191,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "RxGmail_Tests" */;
 			buildPhases = (
-				B508DAC6F224D2F3FF51526C /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				7B9C3D40D69D81D3E00241D3 /* [CP] Embed Pods Frameworks */,
-				3E338B145A3A5BB18F16EC3E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -268,7 +253,6 @@
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				1A91613A1E689B4C007B3F29 /* GoogleService-Info.plist in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
-				1A91613D1E689E9A007B3F29 /* debug.xcconfig in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,7 +261,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A91613E1E689E9A007B3F29 /* debug.xcconfig in Resources */,
 				1A91613B1E689B4C007B3F29 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,82 +268,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3E338B145A3A5BB18F16EC3E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxGmail_Example-RxGmail_Tests/Pods-RxGmail_Example-RxGmail_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3E79951E6A1523484470D739 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		56693D7339B9C27BE3116FAE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxGmail_Example/Pods-RxGmail_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7B9C3D40D69D81D3E00241D3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxGmail_Example-RxGmail_Tests/Pods-RxGmail_Example-RxGmail_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B508DAC6F224D2F3FF51526C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		EF2A8F2E5C060C6BB788C49B /* [CP] Copy Pods Resources */ = {
+		7027FB738FB0F9D5A4413AC0 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -373,6 +281,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxGmail_Example/Pods-RxGmail_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7BD49C5B6CE11339C998C39B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DBE26CCDE82369D2815328F1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxGmail_Example/Pods-RxGmail_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -430,7 +368,6 @@
 /* Begin XCBuildConfiguration section */
 		607FACED1AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1A91613C1E689E9A007B3F29 /* debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -518,7 +455,7 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9028852E8AAEEE3238895DD1 /* Pods-RxGmail_Example.debug.xcconfig */;
+			baseConfigurationReference = 1A91613C1E689E9A007B3F29 /* debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RxGmail/Info.plist;
@@ -533,7 +470,7 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0F8DA6689F4C0471A4E2C9D9 /* Pods-RxGmail_Example.release.xcconfig */;
+			baseConfigurationReference = BC4143B78AE4B0E7547A3586 /* Pods-RxGmail_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RxGmail/Info.plist;
@@ -548,7 +485,7 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68C88A1D3AB0497FCB8416A4 /* Pods-RxGmail_Example-RxGmail_Tests.debug.xcconfig */;
+			baseConfigurationReference = 1A91613C1E689E9A007B3F29 /* debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -568,7 +505,7 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38CEE4AF2D62910CEBB444A9 /* Pods-RxGmail_Example-RxGmail_Tests.release.xcconfig */;
+			baseConfigurationReference = BC4143B78AE4B0E7547A3586 /* Pods-RxGmail_Example.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
