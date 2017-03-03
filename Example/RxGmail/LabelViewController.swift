@@ -15,7 +15,6 @@ class LabelViewController: UITableViewController, LabelViewModelInjector {
 
         outputs.labels.bindTo(tableView.rx.items(cellIdentifier: "Label")) { row, label, cell in
             cell.textLabel?.text = label.name
-            cell.detailTextLabel?.text = label.messageTotal
         }
         .disposed(by: disposeBag)
     }
