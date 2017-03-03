@@ -11,8 +11,6 @@ class LabelViewController: UITableViewController, LabelViewModelInjector {
         let inputs = LabelViewModelInputs()
         let outputs = labelViewModel(inputs)
 
-        // TODO: Why is the table view overlapping the header?
-        //tableView.delegate = nil
         tableView.dataSource = nil
 
         outputs.labels.bindTo(tableView.rx.items(cellIdentifier: "Label")) { row, label, cell in
