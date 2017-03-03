@@ -41,8 +41,11 @@ public class RxGmail {
 
     // MARK: - Types
     public typealias GmailService = GTLRGmailService
-    public typealias Query = GTLRQueryProtocol
+    public typealias QueryType = GTLRQueryProtocol
+    public typealias Query = GTLRQuery
     public typealias Response = GTLRObject
+    public typealias BatchQuery = GTLRBatchQuery
+    public typealias BatchResult = GTLRBatchResult
     public typealias ServiceTicket = GTLRServiceTicket
     public typealias UploadParameters = GTLRUploadParameters
 
@@ -148,7 +151,7 @@ public class RxGmail {
     public typealias ThreadUntrashQuery = GTLRGmailQuery_UsersThreadsUntrash
 
     // MARK: - Generic request helper functions
-    fileprivate func createRequest(observer: AnyObserver<Any?>, query: Query) -> ServiceTicket {
+    fileprivate func createRequest(observer: AnyObserver<Any?>, query: QueryType) -> ServiceTicket {
         let serviceTicket = service.executeQuery(query) { ticket, object, error in
             if let error = error {
                 observer.onError(error)
@@ -167,7 +170,7 @@ public class RxGmail {
      - Returns: An observable with the fetched response. This variant of `execute` returns an optional, which will be `nil` only for queries that explicitly return `nil` to signal success. Most responses will return an instance of `GTLRObject`.
 
      */
-    public func execute<R: Response>(query: Query) -> Observable<R?> {
+    public func execute<R: Response>(query: QueryType) -> Observable<R?> {
         return Observable<Any?>.create { [weak self] observer in
             let serviceTicket = self?.createRequest(observer: observer, query: query)
             return Disposables.create {
@@ -183,11 +186,11 @@ public class RxGmail {
      - Parameter query: the query to execute.
      - Returns: an instance of GTLRObject fetched by the query upon success.
      */
-    public func execute<R: Response>(query: Query) -> Observable<R> {
+    public func execute<R: Response>(query: QueryType) -> Observable<R> {
         return execute(query: query).map { $0! }
     }
 
-    public func execute(query: Query) -> Observable<Void> {
+    public func execute(query: QueryType) -> Observable<Void> {
         let response: Observable<Response?> = execute(query: query)
         return response.map { _ in () }
     }
@@ -201,7 +204,7 @@ public class RxGmail {
      - Returns: an observable that sends one event per page.
      */
     public func executePaged<Q, R>(query: Q) -> Observable<R>
-        where Q: Query, Q: PagedQuery, R: Response, R: PagedResponse {
+        where Q: QueryType, Q: PagedQuery, R: Response, R: PagedResponse {
             func getRemainingPages(after previousPage: R?) -> Observable<R> {
                 let nextPageToken = previousPage?.nextPageToken
                 if previousPage != nil && nextPageToken == nil {
@@ -748,6 +751,13 @@ public class RxGmail {
     }
     
     public func untrashThread(query: ThreadUntrashQuery) -> Observable<Thread> {
+        return execute(query: query)
+    }
+
+    // Batch queries
+    
+    public func batchQuery(queries: [Query]) -> Observable<BatchResult> {
+        let query = BatchQuery.init(queries: queries)
         return execute(query: query)
     }
 }
