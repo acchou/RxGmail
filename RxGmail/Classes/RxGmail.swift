@@ -32,6 +32,23 @@ extension RxGmail.HistoryResponse: PagedResponse { }
 extension RxGmail.ThreadListQuery: PagedQuery { }
 extension RxGmail.ThreadListResponse: PagedResponse { }
 
+extension Observable where Element: RxGmail.Response {
+    /**
+     Override of Observable.debug for GTLRObjects prints a json string.
+     */
+    public func debug(_ identifier: String? = "", trimOutput: Bool = false, file: String = #file, line: UInt = #line, function: String = #function) -> Observable<E> {
+        let identifier = identifier ?? ""
+        let prefix = "\(function) \(identifier) ->"
+        return self.do (
+            onNext: { print("\(prefix) next \($0.jsonString())") },
+            onError: { print("\(prefix) error \($0.localizedDescription)") },
+            onCompleted: { print("\(prefix) *completed*") },
+            onSubscribe: { print("\(prefix) *subscribed*") },
+            onDispose: { print("\(prefix) *disposed*") }
+        )
+    }
+}
+
 public class RxGmail {
     let service: GTLRGmailService
 
@@ -755,7 +772,7 @@ public class RxGmail {
     }
 
     // Batch queries
-    
+
     public func batchQuery(queries: [Query]) -> Observable<BatchResult> {
         let query = BatchQuery.init(queries: queries)
         return execute(query: query)
