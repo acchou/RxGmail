@@ -36,6 +36,7 @@ func LabelViewModel(rxGmail: RxGmail) -> LabelViewModelType {
             .map { $0.labels }
             .unwrap()
             .map(getLabels)
+            .shareReplayLatestWhileConnected()
 
         return LabelViewModelOutputs(labels: labels)
     }
