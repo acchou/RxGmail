@@ -1,11 +1,19 @@
 import UIKit
+import RxSwift
 
-class MessagesViewController: UITableViewController {
+class MessagesViewController: UITableViewController, MessagesViewModelInjector {
+
+    var selectedLabel: Observable<Label>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        let inputs = MessagesViewModelInputs(
+            labelId: selectedLabel.map { $0.identifier }
+        )
+
+        let outputs = messagesViewModel(inputs)
+
     }
 
     override func didReceiveMemoryWarning() {

@@ -15,6 +15,7 @@ func <(lhs: String?, rhs: String?) -> Bool {
 }
 
 struct LabelViewModelInputs {
+    var selectedLabel: Observable<Label>
 }
 
 struct LabelViewModelOutputs {
@@ -23,8 +24,8 @@ struct LabelViewModelOutputs {
 
 typealias LabelViewModelType = (LabelViewModelInputs) -> LabelViewModelOutputs
 
-func getLabels(labels: [RxGmail.Label]) -> [Label] {
-    return labels.sorted { $0.name < $1.name }
+func convertGmailLabelsToViewLabels(_ gmailLabels: [RxGmail.Label]) -> [Label] {
+    return gmailLabels.sorted { $0.name < $1.name }
         .filter { $0.name != nil }
         .map { Label(identifier: $0.identifier!, name: $0.name!) }
 }
@@ -35,7 +36,7 @@ func LabelViewModel(rxGmail: RxGmail) -> LabelViewModelType {
             .debug("labels")
             .map { $0.labels }
             .unwrap()
-            .map(getLabels)
+            .map(convertGmailLabelsToViewLabels)
             .shareReplayLatestWhileConnected()
 
         return LabelViewModelOutputs(labels: labels)

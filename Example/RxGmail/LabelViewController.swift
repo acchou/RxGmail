@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxGmail
 
 class LabelViewController: UITableViewController, LabelViewModelInjector {
     let disposeBag = DisposeBag()
@@ -8,7 +9,12 @@ class LabelViewController: UITableViewController, LabelViewModelInjector {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let inputs = LabelViewModelInputs()
+        let selectedLabel = tableView.rx.modelSelected(Label.self).asObservable()
+        
+        let inputs = LabelViewModelInputs (
+            selectedLabel: selectedLabel
+        )
+
         let outputs = labelViewModel(inputs)
 
         tableView.dataSource = nil
