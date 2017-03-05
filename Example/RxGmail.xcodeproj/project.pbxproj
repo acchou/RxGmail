@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A33E0DE1E6BD83A00F3711C /* LabelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A33E0DD1E6BD83A00F3711C /* LabelDetailViewController.swift */; };
+		1A33E0E01E6BD85600F3711C /* LabelDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A33E0DF1E6BD85600F3711C /* LabelDetailViewModel.swift */; };
 		1A4173F41E6A23C500EB2F06 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4173F31E6A23C500EB2F06 /* MessagesViewController.swift */; };
 		1A4173F61E6A23D400EB2F06 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4173F51E6A23D400EB2F06 /* MessageViewController.swift */; };
 		1A4173F81E6A23E600EB2F06 /* ThreadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4173F71E6A23E600EB2F06 /* ThreadsViewController.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A33E0DD1E6BD83A00F3711C /* LabelDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelDetailViewController.swift; sourceTree = "<group>"; };
+		1A33E0DF1E6BD85600F3711C /* LabelDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelDetailViewModel.swift; sourceTree = "<group>"; };
 		1A4173F31E6A23C500EB2F06 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		1A4173F51E6A23D400EB2F06 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		1A4173F71E6A23E600EB2F06 /* ThreadsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadsViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 				1A9161411E68B1D8007B3F29 /* Global.swift */,
 				1A91613F1E68B07C007B3F29 /* LabelViewController.swift */,
 				1A9161431E68B7E0007B3F29 /* LabelViewModel.swift */,
+				1A33E0DD1E6BD83A00F3711C /* LabelDetailViewController.swift */,
+				1A33E0DF1E6BD85600F3711C /* LabelDetailViewModel.swift */,
 				1A4173F51E6A23D400EB2F06 /* MessageViewController.swift */,
 				1A4173F91E6A240F00EB2F06 /* MessageViewModel.swift */,
 				1A4173F31E6A23C500EB2F06 /* MessagesViewController.swift */,
@@ -338,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A33E0E01E6BD85600F3711C /* LabelDetailViewModel.swift in Sources */,
 				1A4173F81E6A23E600EB2F06 /* ThreadsViewController.swift in Sources */,
 				1A4173FA1E6A240F00EB2F06 /* MessageViewModel.swift in Sources */,
 				1A4173FC1E6A241A00EB2F06 /* MessagesViewModel.swift in Sources */,
@@ -346,6 +353,7 @@
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				1A9161401E68B07C007B3F29 /* LabelViewController.swift in Sources */,
+				1A33E0DE1E6BD83A00F3711C /* LabelDetailViewController.swift in Sources */,
 				1A9161441E68B7E0007B3F29 /* LabelViewModel.swift in Sources */,
 				1A4173FE1E6A242B00EB2F06 /* ThreadsViewModel.swift in Sources */,
 				1A4173F61E6A23D400EB2F06 /* MessageViewController.swift in Sources */,

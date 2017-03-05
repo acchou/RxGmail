@@ -7,9 +7,14 @@ struct MessageHeader {
     var date: String
 }
 
-struct MessagesViewModelInputs {
-    var labelId: Observable<String>
+enum MessagesQueryMode {
+    case All
+    case Unread
+}
 
+struct MessagesViewModelInputs {
+    var selectedLabel: Label
+    var mode: MessagesQueryMode
 }
 
 struct MessagesViewModelOutputs {
@@ -31,26 +36,30 @@ func getHeaders(rawHeaders: [RxGmail.MessagePartHeader]?) -> [String:String] {
 
 func MessagesViewModel(rxGmail: RxGmail) -> MessagesViewModelType {
     return { inputs in
-
-        let messageHeaders = inputs.labelId.flatMapLatest { label -> Observable<[MessageHeader]> in
-            let query = RxGmail.MessageListQuery.query(withUserId: "me")
-            query.labelIds = [label]
-            return rxGmail
-                .listMessages(query: query)       // RxGmail.MessageListResponse
-                .map { $0.messages }              // [RxGmail.Message]?
-                .unwrap()                         // [RxGmail.Message]
-                .flatMap { Observable.from($0) }  // RxGmail.Message
-                .map {
-                    let headers = getHeaders(rawHeaders: $0.payload?.headers)
-                    return MessageHeader(
-                        sender: headers["From"] ?? "",
-                        subject: headers["Subject"] ?? "",
-                        date: headers["Date"] ?? ""
-                    )
-                }
-                .toArray()
+        let query = RxGmail.MessageListQuery.query(withUserId: "me")
+        query.labelIds = [inputs.selectedLabel.identifier]
+        if case .Unread = inputs.mode {
+            query.q = "is:unread"
         }
-        .shareReplayLatestWhileConnected()
+        let messageHeaders = rxGmail
+            .listMessages(query: query)       // RxGmail.MessageListResponse
+            .map { $0.messages }              // [RxGmail.Message]?
+            .unwrap()                         // [RxGmail.Message]
+            .debug("MSG 1")
+            .flatMap { Observable.from($0) }  // RxGmail.Message
+            .debug("MSG 2")
+            .map { response -> MessageHeader in
+                let headers = getHeaders(rawHeaders: response.payload?.headers)
+                return MessageHeader(
+                    sender: headers["From"] ?? "",
+                    subject: headers["Subject"] ?? "",
+                    date: headers["Date"] ?? ""
+                )
+            }
+            .debug("MSG 3")
+            .toArray()
+            .debug("MSG 4")
+            .shareReplayLatestWhileConnected()
 
         return MessagesViewModelOutputs(messageHeaders: messageHeaders)
     }

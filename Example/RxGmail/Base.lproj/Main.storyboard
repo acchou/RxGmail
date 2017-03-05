@@ -68,9 +68,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="i1N-gU-4Id" kind="show" id="w9r-tc-vQs"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -79,6 +76,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Labels" id="3fP-uL-w26"/>
+                    <connections>
+                        <segue destination="i1N-gU-4Id" kind="show" identifier="ShowLabelDetail" id="Rxd-Jw-k6t"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZRd-y6-NbS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -87,7 +87,7 @@
         <!--Label-->
         <scene sceneID="wyG-UO-em4">
             <objects>
-                <tableViewController id="i1N-gU-4Id" sceneMemberID="viewController">
+                <tableViewController id="i1N-gU-4Id" customClass="LabelDetailViewController" customModule="RxGmail_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="RWB-cX-wel">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -191,7 +191,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="dIT-Ar-Mje" kind="show" id="oyU-tt-zJF"/>
+                                            <segue destination="dIT-Ar-Mje" kind="show" identifier="ShowMessagesTotal" id="oyU-tt-zJF"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="h0Q-HL-X5R" detailTextLabel="kHg-AW-GII" style="IBUITableViewCellStyleValue1" id="eiS-v3-iL2">
@@ -218,7 +218,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="dIT-Ar-Mje" kind="show" id="OBz-1r-zcw"/>
+                                            <segue destination="dIT-Ar-Mje" kind="show" identifier="ShowMessagesUnread" id="OBz-1r-zcw"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="hLC-Pl-ybg" detailTextLabel="LOH-pp-4Cc" style="IBUITableViewCellStyleValue1" id="Ir2-dk-MLJ">
@@ -269,7 +269,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="vOL-sb-CmD" kind="show" id="gP3-6e-Iu9"/>
+                                            <segue destination="vOL-sb-CmD" kind="show" identifier="ShowThreadsTotal" id="gP3-6e-Iu9"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="hXB-Wu-akG" detailTextLabel="DFc-mG-kp5" style="IBUITableViewCellStyleValue1" id="71C-RK-i5n">
@@ -296,7 +296,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="vOL-sb-CmD" kind="show" id="IOh-FZ-lz8"/>
+                                            <segue destination="vOL-sb-CmD" kind="show" identifier="ShowThreadsUnread" id="IOh-FZ-lz8"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="dcC-x1-q3T" detailTextLabel="HnT-SV-syl" style="IBUITableViewCellStyleValue1" id="jxe-nt-PLz">
@@ -332,10 +332,21 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Label" id="aie-EV-vkx"/>
+                    <connections>
+                        <outlet property="id" destination="yIz-V4-oTA" id="1ij-av-5id"/>
+                        <outlet property="labelListVisibility" destination="UbA-TI-9tO" id="vgd-OG-frt"/>
+                        <outlet property="messageListVisibility" destination="ll2-ei-XCG" id="BF0-5f-ido"/>
+                        <outlet property="messagesTotal" destination="hfX-Me-5S2" id="rsA-bi-IPP"/>
+                        <outlet property="messagesUnread" destination="kHg-AW-GII" id="H8G-wq-vMt"/>
+                        <outlet property="name" destination="LOH-pp-4Cc" id="br8-KI-qo0"/>
+                        <outlet property="threadsTotal" destination="vNv-RF-3Hk" id="NNL-et-sK4"/>
+                        <outlet property="threadsUnread" destination="DFc-mG-kp5" id="yzi-Uu-sHY"/>
+                        <outlet property="type" destination="HnT-SV-syl" id="lrD-U3-AOd"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="925-vl-F1x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2607" y="38"/>
+            <point key="canvasLocation" x="2593" y="36"/>
         </scene>
         <!--Messages-->
         <scene sceneID="Qe2-1Y-QtB">
@@ -346,7 +357,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="messageItem" textLabel="b7P-Pr-n1I" detailTextLabel="hsm-EP-z2B" style="IBUITableViewCellStyleValue1" id="2OE-Rt-pce">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MessageCell" textLabel="b7P-Pr-n1I" detailTextLabel="hsm-EP-z2B" style="IBUITableViewCellStyleSubtitle" id="2OE-Rt-pce">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2OE-Rt-pce" id="jXs-bi-Y3e">
@@ -354,24 +365,21 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b7P-Pr-n1I">
-                                            <rect key="frame" x="15" y="11" width="34" height="21"/>
+                                            <rect key="frame" x="15" y="4" width="34" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hsm-EP-z2B">
-                                            <rect key="frame" x="296" y="11" width="44" height="21"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hsm-EP-z2B">
+                                            <rect key="frame" x="15" y="25" width="33" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="5Gb-GO-hfN" kind="show" id="yNa-CO-jPO"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -380,12 +388,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Messages" id="A3M-LK-SlO"/>
+                    <connections>
+                        <segue destination="5Gb-GO-hfN" kind="show" identifier="ShowMessageDetails" id="cN7-KM-Fuw"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GMr-sF-Jez" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4577" y="37"/>
         </scene>
-        <!--Message-->
+        <!--Message Detail-->
         <scene sceneID="t5b-4x-gaf">
             <objects>
                 <tableViewController id="5Gb-GO-hfN" sceneMemberID="viewController">
@@ -394,7 +405,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerItem" textLabel="LjD-Hx-Sv4" detailTextLabel="oir-tM-yQD" style="IBUITableViewCellStyleValue2" id="Yi3-ln-kew">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderCell" textLabel="LjD-Hx-Sv4" detailTextLabel="oir-tM-yQD" style="IBUITableViewCellStyleValue2" id="Yi3-ln-kew">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yi3-ln-kew" id="M0c-F2-bt0">
@@ -441,7 +452,7 @@
                             <outlet property="delegate" destination="5Gb-GO-hfN" id="F8o-iD-cIy"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Message" id="ZTE-A7-wdb"/>
+                    <navigationItem key="navigationItem" title="Message Detail" id="ZTE-A7-wdb"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bMF-sJ-6NV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -456,7 +467,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="threadItem" textLabel="Xgw-7H-vC4" detailTextLabel="7v4-jz-mid" style="IBUITableViewCellStyleValue1" id="ARa-7E-CGT">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ThreadCell" textLabel="Xgw-7H-vC4" detailTextLabel="7v4-jz-mid" style="IBUITableViewCellStyleValue1" id="ARa-7E-CGT">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ARa-7E-CGT" id="yeQ-b8-Ylh">
@@ -479,9 +490,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="dIT-Ar-Mje" kind="show" id="Bus-yy-rFV"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -490,6 +498,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Threads" id="Poc-es-afh"/>
+                    <connections>
+                        <segue destination="dIT-Ar-Mje" kind="show" identifier="ShowThreadMessages" id="HoW-9K-UxN"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zhE-ce-m8j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -515,7 +526,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="OBz-1r-zcw"/>
         <segue reference="gP3-6e-Iu9"/>
-        <segue reference="Bus-yy-rFV"/>
     </inferredMetricsTieBreakers>
 </document>

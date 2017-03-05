@@ -15,10 +15,10 @@ func <(lhs: String?, rhs: String?) -> Bool {
 }
 
 struct LabelViewModelInputs {
-    var selectedLabel: Observable<Label>
 }
 
 struct LabelViewModelOutputs {
+    // Each event is an array of the labels to show in the table
     var labels: Observable<[Label]>
 }
 
@@ -33,7 +33,6 @@ func convertGmailLabelsToViewLabels(_ gmailLabels: [RxGmail.Label]) -> [Label] {
 func LabelViewModel(rxGmail: RxGmail) -> LabelViewModelType {
     return { inputs in
         let labels = rxGmail.listLabels()
-            .debug("labels")
             .map { $0.labels }
             .unwrap()
             .map(convertGmailLabelsToViewLabels)

@@ -1,11 +1,3 @@
-//
-//  RxGmail.swift
-//  Pods
-//
-//  Created by Andy Chou on 3/1/17.
-//
-//
-
 import GoogleAPIClientForREST
 import RxSwift
 import RxSwiftExt
@@ -193,8 +185,9 @@ public class RxGmail {
             return Disposables.create {
                 serviceTicket?.cancel()
             }
-            }
-            .map { $0 as! R? }
+        }
+        .map { $0 as! R? }
+        .shareReplayLatestWhileConnected()
     }
 
     /**
@@ -235,6 +228,7 @@ public class RxGmail {
                 }
             }
             return getRemainingPages(after: nil)
+                .shareReplayLatestWhileConnected()
     }
 
     // MARK: - Users
