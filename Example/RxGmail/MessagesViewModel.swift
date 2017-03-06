@@ -46,13 +46,11 @@ func MessagesViewModel(rxGmail: RxGmail) -> MessagesViewModelType {
             .map { $0.messages }              // [RxGmail.Message]?
             .unwrap()                         // [RxGmail.Message]
             .flatMap { Observable.from($0) }  // RxGmail.Message
-            .flatMap { message -> Observable<RxGmail.Message> in
-                if let messageId = message.identifier {
-                    return rxGmail.getMessage(messageId: messageId)
-                } else {
-                    return Observable.empty()
-                }
-            }
+            .map { $0.identifier }            // String?
+            .unwrap()                         // String (message identifier)
+            .flatMap {
+                 rxGmail.getMessage(messageId: $0)
+            }                                 // RxGmail.Message (with all headers)
             .map { message -> MessageHeader in
                 let headers = getHeaders(rawHeaders: message.payload?.headers)
                 return MessageHeader(
@@ -60,7 +58,7 @@ func MessagesViewModel(rxGmail: RxGmail) -> MessagesViewModelType {
                     subject: headers["Subject"] ?? "",
                     date: headers["Date"] ?? ""
                 )
-            }
+            }                                 // MessageHeader
             .toArray()
             .shareReplayLatestWhileConnected()
 
