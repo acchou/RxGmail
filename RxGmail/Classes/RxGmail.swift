@@ -768,7 +768,55 @@ public class RxGmail {
     // Batch queries
 
     public func batchQuery(queries: [Query]) -> Observable<BatchResult> {
-        let query = BatchQuery.init(queries: queries)
+        let query = BatchQuery(queries: queries)
         return execute(query: query)
+    }
+}
+
+public protocol GetQueryType {
+    static func query(withUserId userId: String, identifier: String) -> Self
+}
+
+public protocol Identifiable {
+    associatedtype QueryType: RxGmail.Query, GetQueryType
+    var identifier: String? { get }
+}
+
+extension Identifiable {
+    func getQuery(forUserId userId: String = "me") -> QueryType {
+        return QueryType.query(withUserId: userId, identifier: self.identifier!)
+    }
+}
+
+extension RxGmail.MessageGetQuery: GetQueryType { }
+extension RxGmail.LabelsGetQuery: GetQueryType { }
+extension RxGmail.ThreadGetQuery: GetQueryType { }
+
+extension RxGmail.Message: Identifiable {
+    public typealias QueryType = RxGmail.MessageGetQuery
+}
+
+extension RxGmail.Label: Identifiable {
+    public typealias QueryType = RxGmail.LabelsGetQuery
+}
+
+extension RxGmail.Thread: Identifiable {
+    public typealias QueryType = RxGmail.ThreadGetQuery
+}
+
+extension RxGmail {
+    /**
+        Gmail "List" queries return only response objects with identifiers but no details. fetchDetails uses a batch query to retrieve details for all of the response objects in an array.
+     
+        - Parameter identifiables: array of response objects with an "identifier" attribute
+        - Returns: An observable of the array of response objects whose details were successfully retrieved.
+     */
+    public func fetchDetails<T: Identifiable>(_ identifiables: [T], forUserId userId: String = "me") -> Observable<[T]>{
+        let queries: [T.QueryType] = identifiables.map { (identifiable: T) -> T.QueryType in
+            identifiable.getQuery(forUserId: userId)
+        }
+        return self.batchQuery(queries: queries)
+            .map { $0.successes?.values.map { $0 as! T } }
+            .unwrap()
     }
 }

@@ -41,16 +41,14 @@ func MessagesViewModel(rxGmail: RxGmail) -> MessagesViewModelType {
         if case .Unread = inputs.mode {
             query.q = "is:unread"
         }
+
+        // Do the lazy thing and load all message headers every time this view appears. A more production ready implementation would use caching.
         let messageHeaders = rxGmail
-            .listMessages(query: query)       // RxGmail.MessageListResponse
-            .map { $0.messages }              // [RxGmail.Message]?
-            .unwrap()                         // [RxGmail.Message]
-            .flatMap { Observable.from($0) }  // RxGmail.Message
-            .map { $0.identifier }            // String?
-            .unwrap()                         // String (message identifier)
+            .listMessages(query: query)                  // RxGmail.MessageListResponse
             .flatMap {
-                 rxGmail.getMessage(messageId: $0)
-            }                                 // RxGmail.Message (with all headers)
+                rxGmail.fetchDetails($0.messages ?? [])  // [RxGmail.Message] (with all headers)
+            }
+            .flatMap { Observable.from($0) }             // RxGmail.Message
             .map { message -> MessageHeader in
                 let headers = getHeaders(rawHeaders: message.payload?.headers)
                 return MessageHeader(
@@ -58,7 +56,7 @@ func MessagesViewModel(rxGmail: RxGmail) -> MessagesViewModelType {
                     subject: headers["Subject"] ?? "",
                     date: headers["Date"] ?? ""
                 )
-            }                                 // MessageHeader
+            }                                            // MessageHeader
             .toArray()
             .shareReplayLatestWhileConnected()
 
