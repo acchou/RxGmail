@@ -9,8 +9,6 @@ class LabelViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let selectedLabel = tableView.rx.modelSelected(Label.self).asObservable()
-
         let inputs = LabelViewModelInputs ()
         let outputs = global.labelViewModel(inputs)
 
@@ -21,10 +19,13 @@ class LabelViewController: UITableViewController {
         }
         .disposed(by: disposeBag)
 
-        selectedLabel.subscribe(onNext: {
-            self.performSegue(withIdentifier: "ShowLabelDetail", sender: $0)
-        })
-        .disposed(by: disposeBag)
+        tableView.rx
+            .modelSelected(Label.self)
+            .asObservable()
+            .subscribe(onNext: {
+                self.performSegue(withIdentifier: "ShowLabelDetail", sender: $0)
+            })
+            .disposed(by: disposeBag)
     }
 
     override func didReceiveMemoryWarning() {

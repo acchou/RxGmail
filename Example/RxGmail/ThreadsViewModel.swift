@@ -1,7 +1,8 @@
 import RxSwift
 import RxGmail
 
-struct ThreadHeader {
+struct Thread {
+    var identifier: String
     var sender: String
     var subject: String
     var date: String
@@ -18,7 +19,7 @@ struct ThreadsViewModelInputs {
 }
 
 struct ThreadsViewModelOutputs {
-    var threadHeaders: Observable<[ThreadHeader]>
+    var threadHeaders: Observable<[Thread]>
 }
 
 typealias ThreadsViewModelType = (ThreadsViewModelInputs) -> ThreadsViewModelOutputs
@@ -38,9 +39,10 @@ func ThreadsViewModel(rxGmail: RxGmail) -> ThreadsViewModelType {
                 rxGmail.fetchDetails($0.threads ?? [])  // [RxGmail.Thread] (with all headers)
             }
             .flatMap { Observable.from($0) }            // RxGmail.Thread
-            .map { thread -> ThreadHeader in
+            .map { thread -> Thread in
                 let headers = thread.messages?.first?.parseHeaders() ?? [:]
-                return ThreadHeader(
+                return Thread(
+                    identifier: thread.identifier ?? "",
                     sender: headers["From"] ?? "",
                     subject: headers["Subject"] ?? "",
                     date: headers["Date"] ?? ""

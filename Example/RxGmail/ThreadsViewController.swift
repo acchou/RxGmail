@@ -24,16 +24,24 @@ class ThreadsViewController: UITableViewController {
             cell.detailTextLabel?.text = thread.sender
         }
         .disposed(by: disposeBag)
+
+        tableView.rx
+            .modelSelected(Thread.self)
+            .asObservable()
+            .subscribe(onNext: {
+                self.performSegue(withIdentifier: "ShowThreadMessages", sender: $0)
+            })
+            .disposed(by: disposeBag)
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let messagesVC = segue.destination as! MessagesViewController
+        messagesVC.selectedLabel = selectedLabel
+        let selectedThread = sender as! Thread
+        // TODO: Should there be a separate view for "thread messages"?
+        messagesVC.selectedThread = selectedThread
     }
-    */
-
 }
