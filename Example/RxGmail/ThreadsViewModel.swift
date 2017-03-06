@@ -1,0 +1,54 @@
+import RxSwift
+import RxGmail
+
+struct ThreadHeader {
+    var sender: String
+    var subject: String
+    var date: String
+}
+
+enum ThreadsQueryMode {
+    case All
+    case Unread
+}
+
+struct ThreadsViewModelInputs {
+    var selectedLabel: Label
+    var mode: ThreadsQueryMode
+}
+
+struct ThreadsViewModelOutputs {
+    var threadHeaders: Observable<[ThreadHeader]>
+}
+
+typealias ThreadsViewModelType = (ThreadsViewModelInputs) -> ThreadsViewModelOutputs
+
+func ThreadsViewModel(rxGmail: RxGmail) -> ThreadsViewModelType {
+    return { inputs in
+        let query = RxGmail.ThreadListQuery.query(withUserId: "me")
+        query.labelIds = [inputs.selectedLabel.identifier]
+        if case .Unread = inputs.mode {
+            query.q = "is:unread"
+        }
+
+        // Do the lazy thing and load all message headers every time this view appears. A more production ready implementation would use caching.
+        let threadHeaders = rxGmail
+            .listThreads(query: query)                  // RxGmail.ThreadListResponse
+            .flatMap {
+                rxGmail.fetchDetails($0.threads ?? [])  // [RxGmail.Thread] (with all headers)
+            }
+            .flatMap { Observable.from($0) }            // RxGmail.Thread
+            .map { thread -> ThreadHeader in
+                let headers = thread.messages?.first?.parseHeaders() ?? [:]
+                return ThreadHeader(
+                    sender: headers["From"] ?? "",
+                    subject: headers["Subject"] ?? "",
+                    date: headers["Date"] ?? ""
+                )
+            }                                            // MessageHeader
+            .toArray()
+            .shareReplayLatestWhileConnected()
+
+        return ThreadsViewModelOutputs(threadHeaders: threadHeaders)
+    }
+}

@@ -820,3 +820,16 @@ extension RxGmail {
             .unwrap()
     }
 }
+
+extension RxGmail.Message {
+    public func parseHeaders() -> [String:String] {
+        guard let rawHeaders = self.payload?.headers else { return [:] }
+        var headers = [String:String]()
+        rawHeaders.forEach {
+            if let name = $0.name {
+                headers[name] = $0.value ?? ""
+            }
+        }
+        return headers
+    }
+}

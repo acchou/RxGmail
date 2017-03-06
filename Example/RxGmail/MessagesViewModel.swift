@@ -23,17 +23,6 @@ struct MessagesViewModelOutputs {
 
 typealias MessagesViewModelType = (MessagesViewModelInputs) -> MessagesViewModelOutputs
 
-func getHeaders(rawHeaders: [RxGmail.MessagePartHeader]?) -> [String:String] {
-    guard let rawHeaders = rawHeaders else { return [:] }
-    var headers = [String:String]()
-    rawHeaders.forEach {
-        if let name = $0.name {
-            headers[name] = $0.value ?? ""
-        }
-    }
-    return headers
-}
-
 func MessagesViewModel(rxGmail: RxGmail) -> MessagesViewModelType {
     return { inputs in
         let query = RxGmail.MessageListQuery.query(withUserId: "me")
@@ -50,7 +39,7 @@ func MessagesViewModel(rxGmail: RxGmail) -> MessagesViewModelType {
             }
             .flatMap { Observable.from($0) }             // RxGmail.Message
             .map { message -> MessageHeader in
-                let headers = getHeaders(rawHeaders: message.payload?.headers)
+                let headers = message.parseHeaders()
                 return MessageHeader(
                     sender: headers["From"] ?? "",
                     subject: headers["Subject"] ?? "",

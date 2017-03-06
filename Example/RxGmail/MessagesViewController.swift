@@ -1,5 +1,6 @@
 import UIKit
 import RxSwift
+import RxCocoa
 
 class MessagesViewController: UITableViewController {
     let disposeBag = DisposeBag()

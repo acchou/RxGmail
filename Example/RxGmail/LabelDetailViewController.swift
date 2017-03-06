@@ -73,7 +73,16 @@ class LabelDetailViewController: UITableViewController {
                 messagesVC.selectedLabel = selectedLabel
                 messagesVC.mode = .Unread
 
-            // TODO: Handle threads segues.
+            case threadsTotal:
+                let threadsVC = segue.destination as! ThreadsViewController
+                threadsVC.selectedLabel = selectedLabel
+                threadsVC.mode = .All
+
+            case threadsUnread:
+                let threadsVC = segue.destination as! ThreadsViewController
+                threadsVC.selectedLabel = selectedLabel
+                threadsVC.mode = .Unread
+
             default:
                 fatalError()
             }
