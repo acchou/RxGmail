@@ -35,8 +35,8 @@ func MessagesViewModel(rxGmail: RxGmail) -> MessagesViewModelType {
         let messageHeaders = rxGmail
             .listMessages(query: query)                  // RxGmail.MessageListResponse
             .flatMap {
-                rxGmail.fetchDetails($0.messages ?? [])  // [RxGmail.Message] (with all headers)
-            }
+                rxGmail.fetchDetails($0.messages ?? [], detailType: .metadata)
+            }                                            // [RxGmail.Message] (with all headers)
             .flatMap { Observable.from($0) }             // RxGmail.Message
             .map { message -> MessageHeader in
                 let headers = message.parseHeaders()

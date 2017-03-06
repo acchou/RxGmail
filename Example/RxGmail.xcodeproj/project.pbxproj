@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A1348A71E6DED96009EDAA7 /* ThreadMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1348A61E6DED96009EDAA7 /* ThreadMessagesViewController.swift */; };
+		1A1348A91E6DEDA3009EDAA7 /* ThreadMessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1348A81E6DEDA3009EDAA7 /* ThreadMessagesViewModel.swift */; };
 		1A33E0DE1E6BD83A00F3711C /* LabelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A33E0DD1E6BD83A00F3711C /* LabelDetailViewController.swift */; };
 		1A33E0E01E6BD85600F3711C /* LabelDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A33E0DF1E6BD85600F3711C /* LabelDetailViewModel.swift */; };
 		1A4173F41E6A23C500EB2F06 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4173F31E6A23C500EB2F06 /* MessagesViewController.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A1348A61E6DED96009EDAA7 /* ThreadMessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadMessagesViewController.swift; sourceTree = "<group>"; };
+		1A1348A81E6DEDA3009EDAA7 /* ThreadMessagesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadMessagesViewModel.swift; sourceTree = "<group>"; };
 		1A33E0DD1E6BD83A00F3711C /* LabelDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelDetailViewController.swift; sourceTree = "<group>"; };
 		1A33E0DF1E6BD85600F3711C /* LabelDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelDetailViewModel.swift; sourceTree = "<group>"; };
 		1A4173F31E6A23C500EB2F06 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 				1A4173FB1E6A241A00EB2F06 /* MessagesViewModel.swift */,
 				1A4173F71E6A23E600EB2F06 /* ThreadsViewController.swift */,
 				1A4173FD1E6A242B00EB2F06 /* ThreadsViewModel.swift */,
+				1A1348A61E6DED96009EDAA7 /* ThreadMessagesViewController.swift */,
+				1A1348A81E6DEDA3009EDAA7 /* ThreadMessagesViewModel.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
@@ -344,8 +350,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A1348A91E6DEDA3009EDAA7 /* ThreadMessagesViewModel.swift in Sources */,
 				1A33E0E01E6BD85600F3711C /* LabelDetailViewModel.swift in Sources */,
 				1A4173F81E6A23E600EB2F06 /* ThreadsViewController.swift in Sources */,
+				1A1348A71E6DED96009EDAA7 /* ThreadMessagesViewController.swift in Sources */,
 				1A4173FA1E6A240F00EB2F06 /* MessageViewModel.swift in Sources */,
 				1A4173FC1E6A241A00EB2F06 /* MessagesViewModel.swift in Sources */,
 				1A4173F41E6A23C500EB2F06 /* MessagesViewController.swift in Sources */,

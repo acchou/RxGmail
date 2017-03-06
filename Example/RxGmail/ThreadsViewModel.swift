@@ -36,8 +36,8 @@ func ThreadsViewModel(rxGmail: RxGmail) -> ThreadsViewModelType {
         let threadHeaders = rxGmail
             .listThreads(query: query)                  // RxGmail.ThreadListResponse
             .flatMap {
-                rxGmail.fetchDetails($0.threads ?? [])  // [RxGmail.Thread] (with all headers)
-            }
+                rxGmail.fetchDetails($0.threads ?? [], detailType: .metadata)
+            }                                           // [RxGmail.Thread] (with all headers)
             .flatMap { Observable.from($0) }            // RxGmail.Thread
             .map { thread -> Thread in
                 let headers = thread.messages?.first?.parseHeaders() ?? [:]

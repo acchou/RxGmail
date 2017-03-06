@@ -45,6 +45,7 @@ public class RxGmail {
     let service: GTLRGmailService
 
     public init(gmailService: GTLRGmailService) {
+        GTMSessionFetcher.setLoggingEnabled(true)
         self.service = gmailService
     }
 
@@ -775,6 +776,7 @@ public class RxGmail {
 
 public protocol GetQueryType {
     static func query(withUserId userId: String, identifier: String) -> Self
+    var format: String? { get set }
 }
 
 public protocol Identifiable {
@@ -789,8 +791,13 @@ extension Identifiable {
 }
 
 extension RxGmail.MessageGetQuery: GetQueryType { }
-extension RxGmail.LabelsGetQuery: GetQueryType { }
 extension RxGmail.ThreadGetQuery: GetQueryType { }
+extension RxGmail.LabelsGetQuery: GetQueryType {
+    public var format: String? {
+        get { return nil }
+        set { }
+    }
+}
 
 extension RxGmail.Message: Identifiable {
     public typealias QueryType = RxGmail.MessageGetQuery
@@ -805,15 +812,35 @@ extension RxGmail.Thread: Identifiable {
 }
 
 extension RxGmail {
+    // See https://developers.google.com/gmail/api/v1/reference/users/messages/get
+    public enum DetailType {
+        case full
+        case metadata
+        case minimal
+        case raw
+
+        func asGmailFormat() -> String {
+            switch self {
+            case .full: return kGTLRGmailFormatFull
+            case .metadata: return kGTLRGmailFormatMetadata
+            case .minimal: return kGTLRGmailFormatMinimal
+            case .raw: return kGTLRGmailFormatRaw
+            }
+        }
+    }
+
     /**
-        Gmail "List" queries return only response objects with identifiers but no details. fetchDetails uses a batch query to retrieve details for all of the response objects in an array.
+        Gmail "List" queries return only response objects with identifiers but no details. fetchMetadata uses a batch query to retrieve details for all of the response objects in an array.
      
         - Parameter identifiables: array of response objects with an "identifier" attribute
-        - Returns: An observable of the array of response objects whose details were successfully retrieved.
+        - Parameter format: Specifies what details to retrieve.
+        - Returns: An observable of the array of response objects whose metadata were successfully retrieved.
      */
-    public func fetchDetails<T: Identifiable>(_ identifiables: [T], forUserId userId: String = "me") -> Observable<[T]>{
+    public func fetchDetails<T: Identifiable>(_ identifiables: [T], detailType: DetailType? = nil, forUserId userId: String = "me") -> Observable<[T]>{
         let queries: [T.QueryType] = identifiables.map { (identifiable: T) -> T.QueryType in
-            identifiable.getQuery(forUserId: userId)
+            var query = identifiable.getQuery(forUserId: userId)
+            query.format = detailType?.asGmailFormat()
+            return query
         }
         return self.batchQuery(queries: queries)
             .map { $0.successes?.values.map { $0 as! T } }

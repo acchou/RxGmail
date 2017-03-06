@@ -15,9 +15,9 @@ class ThreadsViewController: UITableViewController {
             mode: mode
         )
 
-        let outputs = global.threadsViewModel(inputs)
-
         tableView.dataSource = nil
+
+        let outputs = global.threadsViewModel(inputs)
 
         outputs.threadHeaders.bindTo(tableView.rx.items(cellIdentifier: "ThreadCell")) { index, thread, cell in
             cell.textLabel?.text = thread.subject
@@ -38,10 +38,8 @@ class ThreadsViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let messagesVC = segue.destination as! MessagesViewController
-        messagesVC.selectedLabel = selectedLabel
+        let threadMessagesVC = segue.destination as! ThreadMessagesViewController
         let selectedThread = sender as! Thread
-        // TODO: Should there be a separate view for "thread messages"?
-        messagesVC.selectedThread = selectedThread
+        threadMessagesVC.threadId = selectedThread.identifier
     }
 }
