@@ -21,7 +21,6 @@ class LabelViewController: UITableViewController {
 
         tableView.rx
             .modelSelected(Label.self)
-            .asObservable()
             .subscribe(onNext: {
                 self.performSegue(withIdentifier: "ShowLabelDetail", sender: $0)
             })

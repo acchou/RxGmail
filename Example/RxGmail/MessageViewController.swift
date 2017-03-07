@@ -14,29 +14,20 @@ class MessageViewController: UITableViewController {
 
         tableView.dataSource = nil
 
-        outputs.messageParts.bindTo(tableView.rx.items) { (table: UITableView, row: IndexPath, messagePart: MessagePart) in
-            let cell = table.dequeueReusableCell(withIdentifier: "")
+        outputs.messageParts.bindTo(tableView.rx.items) { table, row, messagePart in
+            switch messagePart {
+            case let .header(name, value):
+                let cell = table.dequeueReusableCell(withIdentifier: "HeaderCell")!
+                cell.textLabel?.text = name
+                cell.detailTextLabel?.text = value
+                return cell
+
+            case let .body(contents):
+                let cell = table.dequeueReusableCell(withIdentifier: "MessageBodyCell")!
+                cell.textLabel?.text = contents
+                return cell
+            }
         }
         .disposed(by: disposeBag)
-
-//        items
-//            .bindTo(tableView.rx.items) { (tableView, row, element) in
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
-//                cell.textLabel?.text = "\(element) @ row \(row)"
-//                return cell
-//            }
-//            .disposed(by: disposeBag)
-
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

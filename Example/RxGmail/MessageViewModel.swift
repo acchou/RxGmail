@@ -11,7 +11,7 @@ struct MessageViewModelInputs {
 }
 
 struct MessageViewModelOutputs {
-    var messageParts: Observable<MessagePart>
+    var messageParts: Observable<[MessagePart]>
 }
 
 typealias MessageViewModelType = (MessageViewModelInputs) -> MessageViewModelOutputs
@@ -52,7 +52,7 @@ func MessageViewModel(rxGmail: RxGmail) -> MessageViewModelType {
             .unwrap()
             .map { MessagePart.body(contents: $0) }
 
-        let messageParts = Observable.concat([labels, headers, mimeType, size, attachments, body])
+        let messageParts = Observable.concat([labels, headers, mimeType, size, attachments, body]).toArray()
 
         return MessageViewModelOutputs(messageParts: messageParts)
     }

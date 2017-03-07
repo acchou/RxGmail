@@ -2,6 +2,7 @@ import RxSwift
 import RxGmail
 
 struct MessageCell {
+    var identifier: String
     var sender: String
     var subject: String
     var date: String
@@ -41,6 +42,7 @@ func MessagesViewModel(rxGmail: RxGmail) -> MessagesViewModelType {
             .map { message -> MessageCell in
                 let headers = message.parseHeaders()
                 return MessageCell(
+                    identifier: message.identifier ?? "",
                     sender: headers["From"] ?? "",
                     subject: headers["Subject"] ?? "",
                     date: headers["Date"] ?? ""

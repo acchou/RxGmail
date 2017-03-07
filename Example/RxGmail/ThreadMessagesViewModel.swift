@@ -24,6 +24,7 @@ func ThreadMessagesViewModel(rxGmail: RxGmail) -> ThreadMessagesViewModelType {
             .map { message -> MessageCell in
                 let headers = message.parseHeaders()
                 return MessageCell(
+                    identifier: message.identifier ?? "",
                     sender: headers["From"] ?? "",
                     subject: headers["Subject"] ?? "",
                     date: headers["Date"] ?? ""
