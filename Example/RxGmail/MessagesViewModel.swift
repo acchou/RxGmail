@@ -1,7 +1,7 @@
 import RxSwift
 import RxGmail
 
-struct MessageHeader {
+struct MessageCell {
     var sender: String
     var subject: String
     var date: String
@@ -18,7 +18,7 @@ struct MessagesViewModelInputs {
 }
 
 struct MessagesViewModelOutputs {
-    var messageHeaders: Observable<[MessageHeader]>
+    var messageCells: Observable<[MessageCell]>
 }
 
 typealias MessagesViewModelType = (MessagesViewModelInputs) -> MessagesViewModelOutputs
@@ -32,23 +32,23 @@ func MessagesViewModel(rxGmail: RxGmail) -> MessagesViewModelType {
         }
 
         // Do the lazy thing and load all message headers every time this view appears. A more production ready implementation would use caching.
-        let messageHeaders = rxGmail
+        let messageCells = rxGmail
             .listMessages(query: query)                  // RxGmail.MessageListResponse
             .flatMap {
                 rxGmail.fetchDetails($0.messages ?? [], detailType: .metadata)
             }                                            // [RxGmail.Message] (with all headers)
             .flatMap { Observable.from($0) }             // RxGmail.Message
-            .map { message -> MessageHeader in
+            .map { message -> MessageCell in
                 let headers = message.parseHeaders()
-                return MessageHeader(
+                return MessageCell(
                     sender: headers["From"] ?? "",
                     subject: headers["Subject"] ?? "",
                     date: headers["Date"] ?? ""
                 )
-            }                                            // MessageHeader
-            .toArray()
+            }                                            // MessageCell
+            .toArray()                                   // [MessageCell]
             .shareReplayLatestWhileConnected()
 
-        return MessagesViewModelOutputs(messageHeaders: messageHeaders)
+        return MessagesViewModelOutputs(messageCells: messageCells)
     }
 }

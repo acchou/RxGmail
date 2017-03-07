@@ -22,7 +22,7 @@ class ThreadMessagesViewController: UITableViewController {
 
         tableView.dataSource = nil
 
-        outputs.messageHeaders.bindTo(tableView.rx.items(cellIdentifier: "ThreadMessageCell")) { index, message, cell in
+        outputs.messageCells.bindTo(tableView.rx.items(cellIdentifier: "ThreadMessageCell")) { index, message, cell in
             cell.textLabel?.text = message.subject
             cell.detailTextLabel?.text = message.sender
         }

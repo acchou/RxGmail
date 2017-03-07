@@ -18,10 +18,11 @@ class MessagesViewController: UITableViewController {
         tableView.dataSource = nil
 
         let outputs = global.messagesViewModel(inputs)
-        outputs.messageHeaders.bindTo(tableView.rx.items(cellIdentifier: "MessageCell")) {
-            index, messageHeader, cell in
-                cell.textLabel?.text = messageHeader.subject
-                cell.detailTextLabel?.text = messageHeader.sender
+
+        outputs.messageCells.bindTo(tableView.rx.items(cellIdentifier: "MessageCell")) {
+            index, message, cell in
+                cell.textLabel?.text = message.subject
+                cell.detailTextLabel?.text = message.sender
         }
         .disposed(by: disposeBag)
     }

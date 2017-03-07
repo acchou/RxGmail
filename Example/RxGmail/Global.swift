@@ -11,6 +11,7 @@ struct Global {
     var messagesViewModel: MessagesViewModelType
     var threadsViewModel: ThreadsViewModelType
     var threadMessagesViewModel: ThreadMessagesViewModelType
+    var messageViewModel: MessageViewModelType
 }
 
 extension Global {
@@ -20,7 +21,8 @@ extension Global {
          labelDetailViewModel: LabelDetailViewModelType? = nil,
          messagesViewModel: MessagesViewModelType? = nil,
          threadsViewModel: ThreadsViewModelType? = nil,
-         threadMessagesViewModel: ThreadMessagesViewModelType? = nil) {
+         threadMessagesViewModel: ThreadMessagesViewModelType? = nil,
+         messageViewModel: MessageViewModelType? = nil) {
 
         let gmailService = gmailService ?? GTLRGmailService()
         let rxGmail = rxGmail ?? RxGmail(gmailService: gmailService)
@@ -29,6 +31,7 @@ extension Global {
         let messagesViewModel = messagesViewModel ?? MessagesViewModel(rxGmail: rxGmail)
         let threadsViewModel = threadsViewModel ?? ThreadsViewModel(rxGmail: rxGmail)
         let threadMessagesViewModel = threadMessagesViewModel ?? ThreadMessagesViewModel(rxGmail: rxGmail)
+        let messageViewModel = messageViewModel ?? MessageViewModel(rxGmail: rxGmail)
 
         self.init (
             gmailService: gmailService,
@@ -37,7 +40,8 @@ extension Global {
             labelDetailViewModel: labelDetailViewModel,
             messagesViewModel: messagesViewModel,
             threadsViewModel: threadsViewModel,
-            threadMessagesViewModel: threadMessagesViewModel
+            threadMessagesViewModel: threadMessagesViewModel,
+            messageViewModel: messageViewModel
         )
     }
 }
