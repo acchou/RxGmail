@@ -50,18 +50,20 @@ func MessageViewModel(rxGmail: RxGmail) -> MessageViewModelType {
             .map { MessagePart.header(name: "Attachment:", value: $0) }
 
         let body = message.debug("BODY")
-            .map { $0.payload?.parts?.first(where: { $0.body != nil })?.body?.data }
+            .flatMap { Observable.from($0.payload?.parts ?? []) }
+            .map { $0.body?.data }
             .unwrap()
-            .map {
-                if  let url = URL(string: "data:application/octet-stream;base64,\($0)"),
-                    let decodedData = try? Data(contentsOf: url),
+            .map { data -> String? in
+                if  let decodedData = Data(base64URLEncoded: data),
                     let msgBody = String(data: decodedData, encoding: .utf8)
                 {
                     return msgBody
                 } else {
-                    return "Could not decode message body"
+                    return nil
                 }
             }
+            .unwrap()
+            .take(1)
             .debug("BODY MSG")
             .map { MessagePart.body(contents: $0) }
 

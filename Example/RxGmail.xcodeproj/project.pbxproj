@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A1348A71E6DED96009EDAA7 /* ThreadMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1348A61E6DED96009EDAA7 /* ThreadMessagesViewController.swift */; };
 		1A1348A91E6DEDA3009EDAA7 /* ThreadMessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1348A81E6DEDA3009EDAA7 /* ThreadMessagesViewModel.swift */; };
+		1A16C6231E6FC9FA00FFC51D /* Data+Base64URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A16C6221E6FC9FA00FFC51D /* Data+Base64URL.swift */; };
 		1A33E0DE1E6BD83A00F3711C /* LabelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A33E0DD1E6BD83A00F3711C /* LabelDetailViewController.swift */; };
 		1A33E0E01E6BD85600F3711C /* LabelDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A33E0DF1E6BD85600F3711C /* LabelDetailViewModel.swift */; };
 		1A4173F41E6A23C500EB2F06 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4173F31E6A23C500EB2F06 /* MessagesViewController.swift */; };
@@ -45,6 +46,7 @@
 		102C714E088651DA7D6595A5 /* Pods-RxGmail_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxGmail_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxGmail_Example/Pods-RxGmail_Example.release.xcconfig"; sourceTree = "<group>"; };
 		1A1348A61E6DED96009EDAA7 /* ThreadMessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadMessagesViewController.swift; sourceTree = "<group>"; };
 		1A1348A81E6DEDA3009EDAA7 /* ThreadMessagesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadMessagesViewModel.swift; sourceTree = "<group>"; };
+		1A16C6221E6FC9FA00FFC51D /* Data+Base64URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Base64URL.swift"; sourceTree = "<group>"; };
 		1A33E0DD1E6BD83A00F3711C /* LabelDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelDetailViewController.swift; sourceTree = "<group>"; };
 		1A33E0DF1E6BD85600F3711C /* LabelDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelDetailViewModel.swift; sourceTree = "<group>"; };
 		1A4173F31E6A23C500EB2F06 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				1A9161411E68B1D8007B3F29 /* Global.swift */,
+				1A16C6221E6FC9FA00FFC51D /* Data+Base64URL.swift */,
 				1A91613F1E68B07C007B3F29 /* LabelViewController.swift */,
 				1A9161431E68B7E0007B3F29 /* LabelViewModel.swift */,
 				1A33E0DD1E6BD83A00F3711C /* LabelDetailViewController.swift */,
@@ -362,6 +365,7 @@
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				1A9161401E68B07C007B3F29 /* LabelViewController.swift in Sources */,
 				1A33E0DE1E6BD83A00F3711C /* LabelDetailViewController.swift in Sources */,
+				1A16C6231E6FC9FA00FFC51D /* Data+Base64URL.swift in Sources */,
 				1A9161441E68B7E0007B3F29 /* LabelViewModel.swift in Sources */,
 				1A4173FE1E6A242B00EB2F06 /* ThreadsViewModel.swift in Sources */,
 				1A4173F61E6A23D400EB2F06 /* MessageViewController.swift in Sources */,
