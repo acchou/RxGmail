@@ -31,7 +31,7 @@ func ThreadMessagesViewModel(rxGmail: RxGmail) -> ThreadMessagesViewModelType {
                 )
             }                                            // MessageCell
             .toArray()                                   // [MessageCell]
-            .shareReplayLatestWhileConnected()
+            .shareReplay(1)
 
         return ThreadMessagesViewModelOutputs(messageCells: messageCells)
     }

@@ -188,7 +188,6 @@ public class RxGmail {
             }
         }
         .map { $0 as! R? }
-        .shareReplayLatestWhileConnected()
     }
 
     /**
@@ -229,7 +228,6 @@ public class RxGmail {
                 }
             }
             return getRemainingPages(after: nil)
-                .shareReplayLatestWhileConnected()
     }
 
     // MARK: - Users

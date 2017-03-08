@@ -49,7 +49,7 @@ func ThreadsViewModel(rxGmail: RxGmail) -> ThreadsViewModelType {
                 )
             }                                            // MessageHeader
             .toArray()
-            .shareReplayLatestWhileConnected()
+            .shareReplay(1)
 
         return ThreadsViewModelOutputs(threadHeaders: threadHeaders)
     }

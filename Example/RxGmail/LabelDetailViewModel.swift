@@ -21,7 +21,7 @@ typealias LabelDetailViewModelType = (LabelDetailViewModelInputs) -> LabelDetail
 
 func LabelDetailViewModel(rxGmail: RxGmail) -> LabelDetailViewModelType {
     return { inputs in
-        let response = rxGmail.getLabel(labelId: inputs.selectedLabel.identifier)
+        let response = rxGmail.getLabel(labelId: inputs.selectedLabel.identifier).shareReplay(1)
 
         let id = response.map { $0.identifier }
         let labelListVisibility = response.map { $0.labelListVisibility }

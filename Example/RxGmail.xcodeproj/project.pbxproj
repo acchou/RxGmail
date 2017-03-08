@@ -42,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		102C714E088651DA7D6595A5 /* Pods-RxGmail_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxGmail_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxGmail_Example/Pods-RxGmail_Example.release.xcconfig"; sourceTree = "<group>"; };
 		1A1348A61E6DED96009EDAA7 /* ThreadMessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadMessagesViewController.swift; sourceTree = "<group>"; };
 		1A1348A81E6DEDA3009EDAA7 /* ThreadMessagesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadMessagesViewModel.swift; sourceTree = "<group>"; };
 		1A33E0DD1E6BD83A00F3711C /* LabelDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelDetailViewController.swift; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		92A191E601AE393D8D75800D /* RxGmail.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RxGmail.podspec; path = ../RxGmail.podspec; sourceTree = "<group>"; };
 		BAAB533A822F8BBAA0499202 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		BC4143B78AE4B0E7547A3586 /* Pods-RxGmail_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxGmail_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxGmail_Example/Pods-RxGmail_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,7 +189,7 @@
 		843E2D4172150EFCD006C7C4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BC4143B78AE4B0E7547A3586 /* Pods-RxGmail_Example.release.xcconfig */,
+				102C714E088651DA7D6595A5 /* Pods-RxGmail_Example.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -510,7 +510,7 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BC4143B78AE4B0E7547A3586 /* Pods-RxGmail_Example.release.xcconfig */;
+			baseConfigurationReference = 102C714E088651DA7D6595A5 /* Pods-RxGmail_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RxGmail/Info.plist;
@@ -545,7 +545,6 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BC4143B78AE4B0E7547A3586 /* Pods-RxGmail_Example.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

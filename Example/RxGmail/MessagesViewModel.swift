@@ -49,7 +49,7 @@ func MessagesViewModel(rxGmail: RxGmail) -> MessagesViewModelType {
                 )
             }                                            // MessageCell
             .toArray()                                   // [MessageCell]
-            .shareReplayLatestWhileConnected()
+            .shareReplay(1)
 
         return MessagesViewModelOutputs(messageCells: messageCells)
     }
