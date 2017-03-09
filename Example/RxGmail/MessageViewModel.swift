@@ -49,22 +49,28 @@ func MessageViewModel(rxGmail: RxGmail) -> MessageViewModelType {
             .filter { $0 != "" }
             .map { MessagePart.header(name: "Attachment:", value: $0) }
 
-        let body = message.debug("BODY")
-            .flatMap { Observable.from($0.payload?.parts ?? []) }
-            .map { $0.body?.data }
-            .unwrap()
-            .map { data -> String? in
-                if  let decodedData = Data(base64URLEncoded: data),
-                    let msgBody = String(data: decodedData, encoding: .utf8)
-                {
-                    return msgBody
-                } else {
-                    return nil
-                }
+        func decodeBase64Url(data: String) -> String? {
+            if  let decodedData = Data(base64URLEncoded: data),
+                let msgBody = String(data: decodedData, encoding: .utf8)
+            {
+                return msgBody
+            } else {
+                return nil
             }
+        }
+
+        func getBodyRawContent(part: RxGmail.MessagePart?) -> Observable<String?> {
+            let body = Observable.just(part?.body?.data)
+            let remainingParts = part?.parts?.map { getBodyRawContent(part: $0) } ?? []
+            return body.concat(Observable.from(remainingParts).merge())
+        }
+
+        let body = message
+            .flatMap { getBodyRawContent(part: $0.payload) }
             .unwrap()
-            .take(1)
-            .debug("BODY MSG")
+            .map(decodeBase64Url)
+            .unwrap()
+            .take(1)    // Just take the first available body part for this example. 
             .map { MessagePart.body(contents: $0) }
 
         let messageParts = Observable.concat([headers, labels, mimeType, size, attachments, body]).toArray()

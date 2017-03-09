@@ -20,11 +20,16 @@ class MessageViewController: UITableViewController {
                 let cell = table.dequeueReusableCell(withIdentifier: "HeaderCell")!
                 cell.textLabel?.text = name
                 cell.detailTextLabel?.text = value
+                table.rowHeight = cell.frame.height
                 return cell
 
             case let .body(contents):
                 let cell = table.dequeueReusableCell(withIdentifier: "MessageBodyCell")!
+                cell.textLabel?.lineBreakMode = .byWordWrapping
+                cell.textLabel?.numberOfLines = 0
                 cell.textLabel?.text = contents
+                cell.sizeToFit()
+                table.rowHeight = cell.frame.height
                 return cell
             }
         }
