@@ -9,6 +9,46 @@ RxGmail provides a thin [RxSwift][] wrapper around Gmail's Objective-C
 API. Requests return an Observable<T> that can be transformed with a powerful set
 of [operators][].
 
+## Usage
+
+Create an RxGmail object by passing in a `GTLRGmailService` object:
+
+```swift
+let gmailService = GTLRGmailService()
+var rxGmail = RxGmail(gmailService: gmailService))
+```
+
+If you use Google Sign-In to authenticate, you'll need to pass in an
+appropriate authorization scope. The authorization scope specifies what
+permissions the user is granting to your app when they login. Without the
+proper scope, the Gmail API will reject your API requests.
+
+```swift
+// Typical Google Sign-In setup
+let signIn = GIDSignIn.sharedInstance()!
+signIn.delegate = self
+
+// Request an authorization scope the includes the Gmail API.
+let scopes: NSArray = signIn.scopes as NSArray? ?? []
+
+// This scope only allows for read-only API calls.
+let requiredScopes = [kGTLRAuthScopeGmailReadonly]
+
+// Add requested scopes to existing scopes.
+signIn.scopes = scopes.addingObjects(from: requiredScopes)
+```
+
+RxGmail provides requests that return `Observable`s of Gmail API responses:
+
+```swift
+// Get all of the user's mailbox labels
+let labels = rxGmail.listLabels()   // Observable<LabelsListResponse>
+    .map { $0.labels }              // Observable<[Label]?>
+    .unwrap()                       // Observable<[Label]>
+    .map { $0.name }                // Observable<[String]>
+    .shareReplay(1)                 // Share response values for all observers
+```
+
 ## Example App
 
 The Example app is a simple read-only email client that allows you to navigate
@@ -16,9 +56,7 @@ labels, threads, message lists, and messages.
 
 
 1. Sign up for [Google Sign-In][]. This enables authentication for the example
-   app (it is not required to use RxGmail). You only need to perform the step
-   "Get a configuration file".
-
+   app. You only need to perform the step "Get a configuration file".
 
 2. Turn on the [Gmail API][]. Do not follow all of the instructions (which are
    for a quickstart project, not this project). Just follow the wizard link to
