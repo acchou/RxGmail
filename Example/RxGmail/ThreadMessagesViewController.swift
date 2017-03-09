@@ -27,16 +27,20 @@ class ThreadMessagesViewController: UITableViewController {
             cell.detailTextLabel?.text = message.sender
         }
         .disposed(by: disposeBag)
+
+        tableView.rx
+            .modelSelected(MessageCell.self)
+            .subscribe(onNext: {
+                self.performSegue(withIdentifier: "ShowThreadMessageDetails", sender: $0)
+            })
+            .disposed(by: disposeBag)
     }
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let messageVC = segue.destination as! MessageViewController
+        let message = sender as! MessageCell
+        messageVC.messageId = message.identifier
     }
-    */
-
 }
