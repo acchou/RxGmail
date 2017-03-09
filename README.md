@@ -5,22 +5,30 @@
 [![License](https://img.shields.io/cocoapods/l/RxGmail.svg?style=flat)](http://cocoapods.org/pods/RxGmail)
 [![Platform](https://img.shields.io/cocoapods/p/RxGmail.svg?style=flat)](http://cocoapods.org/pods/RxGmail)
 
-## Example
+RxGmail provides a thin [RxSwift][] wrapper around Gmail's Objective-C
+API. Requests return an Observable<T> that can be transformed with a powerful set
+of [operators][].
 
-Sign up for [Google Sign-In][]. This enables authentication for the example app
-(it is not required to use RxGmail). You only need to perform the step "Get a configuration file". 
+## Example App
+
+The Example app is a simple read-only email client that allows you to navigate
+labels, threads, message lists, and messages.
 
 
+1. Sign up for [Google Sign-In][]. This enables authentication for the example
+   app (it is not required to use RxGmail). You only need to perform the step
+   "Get a configuration file".
 
-1. Turn on the [Gmail API][]. Do not follow all of the instructions (which are
+
+2. Turn on the [Gmail API][]. Do not follow all of the instructions (which are
    for a quickstart project, not this project). Just follow the wizard link to
    automatically turn on the Gmail API, and create a project to use for
    testing. Click cancel when prompted to add a crendential.
    
-2. Copy the `GoogleService-Info.plist` file from step 1 into the directory
+3. Copy the `GoogleService-Info.plist` file from step 1 into the directory
    `Example/RxGmail/`.
 
-3. In this step we'll add some Google service identifiers to a custom Xcode
+4. In this step we'll add some Google service identifiers to a custom Xcode
    configuration file. This file captures your service-specific details that
    are used in the Xcode project configuration, so they that are not checked
    into the repository. Copy the template file
@@ -40,9 +48,9 @@ Sign up for [Google Sign-In][]. This enables authentication for the example app
    
      `GOOGLE_REVERSED_CLIENT_ID = com.googleusercontent.apps.xxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
    
-4. Run `pod install` from the Example directory.
+5. Run `pod install` from the Example directory.
 
-5. Open the file `Example/RxGmail/RxGmail.xcworkspace` with Xcode and it should build and run.
+6. Open the file `Example/RxGmail/RxGmail.xcworkspace` with Xcode and it should build and run.
 
 ## Requirements
 
@@ -57,10 +65,13 @@ pod "RxGmail"
 
 ## Author
 
-Andy Chou, acchou2@gmail.com
+Andy Chou, acchou4@gmail.com
 
 ## License
 
 RxGmail is available under the MIT license. See the LICENSE file for more info.
 
+
+[RxSwift]: https://github.com/ReactiveX/RxSwift
+[operators]: http://reactivex.io/documentation/operators.html
 [Google Sign-In]: https://developers.google.com/identity/sign-in/ios/start-integrating
