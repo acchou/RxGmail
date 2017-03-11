@@ -1,6 +1,6 @@
 import UIKit
 import XCTest
-import RxGmail
+@testable import RxGmail_Example
 
 class Tests: XCTestCase {
     
@@ -15,15 +15,7 @@ class Tests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+        global.rxGmail.listLabels()
+            .map { $0.labels! }
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }
