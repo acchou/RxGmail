@@ -15,7 +15,7 @@ class Tests: XCTestCase {
     }
     
     func testExample() {
-        global.rxGmail.listLabels()
+        let x = global.rxGmail.listLabels()
             .map { $0.labels! }
     }
 }
