@@ -38,6 +38,8 @@ PODS:
   - GTMSessionFetcher/Core (1.1.9)
   - GTMSessionFetcher/Full (1.1.9):
     - GTMSessionFetcher/Core (= 1.1.9)
+  - RxBlocking (3.3.0):
+    - RxSwift (~> 3.3)
   - RxCocoa (3.3.0):
     - RxSwift (~> 3.3)
   - RxGmail (0.1.0):
@@ -50,8 +52,10 @@ PODS:
 
 DEPENDENCIES:
   - Google/SignIn
+  - RxBlocking (~> 3.2)
   - RxCocoa (~> 3.2)
   - RxGmail (from `../`)
+  - RxSwift (~> 3.2)
 
 EXTERNAL SOURCES:
   RxGmail:
@@ -67,11 +71,12 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
+  RxBlocking: 12afc6a1cb8ecc57ae475a4ffacc2df1c4abde10
   RxCocoa: 74acedc2d964823b807e5de2e215e2c2bd2e5a19
   RxGmail: 643badf857387c62274b92d0c183126103bbed44
   RxSwift: 7d42e8bc91faa4c218292400646c482f3402774a
   RxSwiftExt: 492a6575cf6afabb8feeed3204bd0f9e2c695e67
 
-PODFILE CHECKSUM: a840d89906109076e00692af0d48dd8f4ce49498
+PODFILE CHECKSUM: 38f16fe7203fbf9edacacbeb84c0d5ccaf66a69b
 
 COCOAPODS: 1.2.0
